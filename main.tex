@@ -1,0 +1,138 @@
+\documentclass[12pt,a4paper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc} 
+\usepackage{amssymb}
+\usepackage{faktor} 
+\usepackage{fancyhdr}
+\usepackage{todonotes}
+\usepackage{amsmath}
+\usepackage{hyperref}
+% \usepackage[capitalize,nameinlink]{cleveref}
+\usepackage{amsthm}
+% \usepackage[backend=bibtex,style=verbose-trad2]{biblatex}
+
+
+% Theorem Environments
+\theoremstyle{nicestyle}
+\newtheorem{theorem}{Theorem}[section]
+\providecommand*{\theoremautorefname}{Theorem}
+\newtheorem{exercise}[theorem]{Exercise}
+\providecommand*{\exerciseautorefname}{Exercise}
+\newtheorem{definition}[theorem]{Definition}
+\providecommand*{\definitionautorefname}{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\providecommand*{\lemmaautorefname}{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\providecommand*{\propositionautorefname}{Propositon}
+\newtheorem{corollary}[theorem]{Corollary}
+\providecommand*{\corollaryautorefname}{Corollary}
+\newtheorem{claim}[theorem]{Claim}
+\providecommand*{\claimautorefname}{Claim}
+\newtheorem{subclaim}[theorem]{Subclaim}
+\providecommand*{\subclaimautorefname}{Subclaim}
+\newtheorem{convention}[theorem]{Convention}
+\providecommand*{\conventionautorefname}{Convention}
+\newtheorem{remark}[theorem]{Remark}
+\providecommand*{\remarkautorefname}{Remark}
+\newtheorem{fact}[theorem]{Fact}
+\providecommand*{\factautorefname}{Fact}
+\newtheorem{example}[theorem]{Example}
+\providecommand*{\exampleautorefname}{Example}
+\newtheorem{notation}[theorem]{Notation}
+\providecommand*{\notationautorefname}{Notation}
+\newtheorem{question}[theorem]{Question}
+\providecommand*{\questionautorefname}{Question}
+
+\newtheorem*{exercise*}{Exercise}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem*{claim*}{Claim} 
+\newtheorem*{subclaim*}{Subclaim}
+\newtheorem*{convention*}{Convention}
+
+% Proofblack
+\newenvironment{proofblack}{\begin{proof}}
+  {\renewcommand{\qedsymbol}{$\blacksquare$}\end{proof}}
+
+% Math Operators
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\Col}{Col}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\HC}{HC}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\rank}{rank} 
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\ord}{Ord}
+\DeclareMathOperator{\limit}{Lim} 
+\DeclareMathOperator{\zfc}{ZFC}
+\DeclareMathOperator{\zf}{ZF} 
+\DeclareMathOperator{\tc}{tc}
+\DeclareMathOperator{\rk}{rk} 
+\DeclareMathOperator{\cf}{cf}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\fn}{Fn}
+\DeclareMathOperator{\ult}{Ult}
+\DeclareMathOperator{\rS}{r \Sigma}
+\DeclareMathOperator{\crit}{crit}
+\DeclareMathOperator{\trcl}{trcl}
+\DeclareMathOperator{\lh}{lh}
+\DeclareMathOperator{\wfp}{wfp}
+\DeclareMathOperator{\hull}{Hull}
+\DeclareMathOperator{\otp}{otp}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\lex}{lex}
+\DeclareMathOperator{\length}{lh}
+\DeclareMathOperator{\gch}{GCH}
+\DeclareMathOperator{\rud}{rud}
+\DeclareMathOperator{\Lp}{Lp}
+
+\begin{document}
+\author{Stefan Mesken}
+\title{Notes on ``$\mathrm{PFA}$ implies $\mathrm{AD}^{L(\mathbb{R})}$''}
+\maketitle
+
+\section{Quick Reference \S 1}
+\begin{enumerate}
+\item $\kappa$ is a singular, strong limit cardinal such that $\square_{\kappa}$ fails. 
+\item $A_0 \subseteq \kappa$ codes $V_{\kappa}$.
+\item $\lambda = \kappa^{+ \Lp(A_{0})}$.
+\item $\cf(\lambda) < \mu < \kappa$ and $\mu^{\omega} = \mu$.
+\item $g$ is a $\Col(\omega,\mu)$-generic filter.
+\item Given $U \subseteq \mathbb{R}^g$ and $k < \omega$ a coarse
+  $(k, U)$-Woodin mouse (witnessed by
+  $S, T, \Sigma, \delta_0, \ldots, \delta_k$) is a countable
+  transitive model of $\zfc$ such that
+  \begin{enumerate}
+  \item
+    $N \models \delta_0 < \ldots < \delta_k \text{ are Woodin
+      cardinals}$ ,
+  \item
+    $N \models S,T \text{ are trees which project to complements after
+      the collapse } \\ \text{of } \delta_k \text{ to be countable}$ and
+  \item there is a $\omega_1+1$-iteration strategy $\Sigma$ for $N$
+    such that whenever $i \colon N \to P$ is an iteration map by
+    $\Sigma$ and $P$ is countable, then $p[i(S)] \subseteq U$ and
+    $p[i(T)] \subseteq \mathbb{R}^g \setminus U$.
+  \end{enumerate}
+\item For a scale $\vec{\phi}$ we let $\vec{\phi}^{*}$ be the
+  associated sequence of prewellorderes.
+\item $(W_{\alpha}^{*})$ Let $U \subseteq \mathbb{R}^g$ and suppose
+  there are scales $\vec{\phi}, \vec{\psi}$ on $U$ and
+  $\mathbb{R}^g \setminus U$ such that
+  $\vec{\phi}^{*}, \vec{\psi}^{*} \in
+  J_{\alpha}(\mathbb{R}^{g})$. Then for all $k < \omega$ and all
+  $x \in \mathbb{R}^g$ there are $N, \Sigma$ such that
+  \begin{enumerate}
+  \item $x \in N$ and $N$ is a coarse $(k,U)$-Woodin mouse as
+    witnessed by $\Sigma$ and
+  \item $\Sigma \restriction \HC^{V[g]} \in J_{\alpha}(\mathbb{R}^{g})$.g
+  \end{enumerate}
+
+\end{enumerate}
+
+% \bibliographystyle{alpha}
+% \bibliography{mybib}
+\end{document}
