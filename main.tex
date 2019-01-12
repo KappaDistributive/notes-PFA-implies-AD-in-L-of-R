@@ -3,6 +3,7 @@
 % Packages
 \usepackage[utf8]{inputenc} 
 \usepackage{amssymb}
+\usepackage[shortlabels]{enumitem}
 \usepackage{faktor} 
 \usepackage{fancyhdr}
 \usepackage{todonotes}
@@ -67,7 +68,7 @@
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\ord}{Ord}
 \DeclareMathOperator{\limit}{Lim} 
-\DeclareMathOperator{\zfc}{ZFC}
+\DeclareMathOperator{\ZFC}{ZFC}
 \DeclareMathOperator{\zf}{ZF} 
 \DeclareMathOperator{\tc}{tc}
 \DeclareMathOperator{\rk}{rk} 
@@ -104,7 +105,7 @@
 \item Given $U \subseteq \mathbb{R}^g$ and $k < \omega$ a coarse
   $(k, U)$-Woodin mouse (witnessed by
   $S, T, \Sigma, \delta_0, \ldots, \delta_k$) is a countable
-  transitive model of $\zfc$ such that
+  transitive model of $\ZFC$ such that
   \begin{enumerate}
   \item
     $N \models \delta_0 < \ldots < \delta_k \text{ are Woodin
@@ -117,6 +118,9 @@
     $\Sigma$ and $P$ is countable, then $p[i(S)] \subseteq U$ and
     $p[i(T)] \subseteq \mathbb{R}^g \setminus U$.
   \end{enumerate}
+\item For a norm $\phi \colon \dom(\phi) \to \ord$ we let $\le_{\phi}$
+  be the associated prewellorder given by $x \le_{\phi} y$ iff
+  $\phi(x) \le \phi(y)$ and similar for $<_{\phi}$.
 \item For a scale $\vec{\phi}$ we let $\vec{\phi}^{*}$ be the
   associated sequence of prewellorderes.
 \item $(W_{\alpha}^{*})$ Let $U \subseteq \mathbb{R}^g$ and suppose
@@ -130,9 +134,90 @@
     witnessed by $\Sigma$ and
   \item $\Sigma \restriction \HC^{V[g]} \in J_{\alpha}(\mathbb{R}^{g})$.g
   \end{enumerate}
+\item If $W_{\alpha}^{*}$ holds, then
+  $J_{\alpha}(\mathbb{R}^{g}) \models \mathrm{AD}$.
+\item $\mathcal{L}(C)$ is the language of set theory expanded
+  by a constant symbol for each $c \in C$.
+\item For any $\Sigma_1$-formula $\theta(v)$ we associate
+  $(\theta^{k}(v) \mid k < \omega)$ such that $\theta^k$ is $\Sigma_k$
+  and for any $\gamma \in \ord$ and any $x \in \mathbb{R}$
+  \[
+    J_{\gamma+1}(\mathbb{R}) \models \theta[x] \iff \exists k < \omega
+    J_{\gamma}(\mathbb{R}) \models \theta^k[x].
+  \]
 
+\item Given a $\Sigma_1^{\mathcal{L}(\{\mathbb{R})\}}$ formula $\theta(v)$
+  and $z \in \mathbb{R}$, a $\langle \theta, z \rangle$-witness is a
+  $\omega$-sound, $(\omega, \omega_{1}, \omega_1+1)$-iterable
+  $z$-mouse $\mathcal{N}$ for which there are
+  $\delta_0, \ldots, \delta_9, S, T$ such that $\mathcal{N}$ models
+  \begin{enumerate}
+  \item $\ZFC$,
+  \item $\delta_0 < \delta_1 < \ldots, \delta_9$ are Woodin,
+  \item $S, T$ are trees on some $\omega \times \theta$,
+    $\theta < \delta_9$ which are absolutely complementing in
+    $V^{\Col(\omega, \delta_{9})}$ and
+  \item For some $k < \omega$, $p[T]$ is the
+    $\Sigma_{k+3}^{\mathbb{R}}$-theory of $J_{\gamma}(\mathbb{R})$
+    with $\gamma$ minimal such that
+    $J_{\gamma}(\mathbb{R}) \models \theta^k[z]$.
+  \end{enumerate}
+\item If there is a $\langle \theta, z \rangle$-witness, then
+  $L(\mathbb{R}) \models \theta[z]$.
+\item $(W_{\alpha})$ If $\theta(v)$ is a $\Sigma_{1}$-formula,
+  $z \in \mathbb{R}^g$ and
+  $J_{\alpha}(\mathbb{R}^{g}) \models \theta[z]$, then there is a
+  $\langle \theta, z \rangle$-witness $\mathcal{N}$ whose iteration
+  strategy $\Sigma$ satisfies
+  $\Sigma \restriction \mathrm{HC} \in J_{\alpha}(\mathbb{R}^g)$.
+\item If $\alpha$ is a limit ordinal, then
+  $W_{\alpha}^{*} \implies W_{\alpha}$.
+\item An ordinal $\beta$ is critical iff there is some
+  $U \subseteq \mathbb{R}^g$ such that $U$ and
+  $\mathbb{R}^g \setminus U$ admit scales in
+  $J_{\beta+1}(\mathbb{R}^{g})$ but $U$ admits no scale in
+  $J_{\beta}(\mathbb{R}^{g})$.
+\item If $\beta$ is critical, then $\beta+1$ is critical. If $\beta$
+  is a limit of critical ordinals, then $\beta$ is critical iff
+  $J_{\beta}(\mathbb{R}^g)$ is not admissible.
+\item Let $\beta$ be critial. Then one of the following cases holds true:
+  \begin{enumerate}[(1)]
+  \item $\beta = \eta + 1$ for some critical $\eta$,
+  \item $\beta$ is a limit of critical ordinals and either
+    \begin{enumerate}[(a)]
+    \item $\cf(\beta) = \omega$ or
+    \item The ``inadmissible case'': $\cf(\beta) > \omega$ but
+      $J_{\beta}(\mathbb{R}^{g})$ is not admissible.
+    \end{enumerate}
+  \item The ``end-of-gap case'':
+    $\alpha = \sup(\{ \eta < \beta \mid \eta \text{ is critical} \}) <
+    \beta$ and either
+    \begin{enumerate}[(a)]
+    \item $[\alpha, \beta]$ is a $\Sigma_1$ gap or
+    \item $\beta-1$ exists and $[\alpha, \beta-1]$ is a $\Sigma_1$
+      gap.
+    \end{enumerate}
+  \end{enumerate}
+\item A self-justifying system is a countable set
+  $\mathcal{A} \subseteq \mathcal{P}(\mathbb{R})$ which is closed
+  under complements in $\mathbb{R}$ and such that every
+  $A \in \mathcal{A}$ admits a scale
+  $\vec{\psi} = (\psi_{i} \mid i < \omega)$ such that
+  $\le_{\phi} \in \mathcal{A}$ for all $i < \omega$. Here we identify
+  $\le_{\phi} \subseteq \mathbb{R} \times \mathbb{R}$ with its code
+  $\{ x \oplus y \mid x \le_{\psi_{i}} y \} \subseteq \mathbb{R}$.
 \end{enumerate}
 
+\subsection{The inadmissible case.}
+
+\begin{enumerate}
+\item $\kappa$ is a singular strong limit cardinal such that
+  $\kappa^{+ \Lp(A)} < \kappa^+$ for all bounded
+  $A \subseteq \kappa^+$ and
+  $\mu = \cf(\kappa^{+ \Lp(A_{0})})^{\omega}$ where
+  $A_0 \subseteq \kappa$ codes $V_{\kappa}$.
+\item to be continued...
+\end{enumerate}
 % \bibliographystyle{alpha}
 % \bibliography{mybib}
 \end{document}
